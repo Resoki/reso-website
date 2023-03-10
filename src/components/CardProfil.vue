@@ -82,7 +82,6 @@
 
 <script>
 import moment from "moment";
-import axios from "axios";
 export default {
   name: "HomeLogin",
   props: {
@@ -101,7 +100,7 @@ export default {
   data() {
     return {
       login: "",
-      userHasLike: false,
+      userHasLikePost: false,
       password: "",
       dateFormatted: "",
       dateFormattedComment: "",
@@ -113,7 +112,6 @@ export default {
     };
   },
   created() {
-    this.userHasLikePost(this.date);
   },
   methods: {
     openMenuComments() {

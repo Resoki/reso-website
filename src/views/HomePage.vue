@@ -82,7 +82,6 @@ export default {
     }
     this.getData();
     this.getAllPosts();
-    this.userHasLikePost(id);
   },
   methods: {
     async getData() {
@@ -117,7 +116,7 @@ export default {
         .then((res) => {
           this.posts = [];
           res.data.forEach((el) => {
-            this.userHasLikePost(el.post);
+            this.userHasLikePost(el.id);
             this.posts.push(el);
           });
           this.getAllUser();
