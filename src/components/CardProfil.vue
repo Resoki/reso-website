@@ -30,7 +30,7 @@
           alt="Card Image"
           style="width: 40px; height: 30px"
       /></span>
-      <p :v-if="userHasLike">LIKE</p>
+      <p v-if="userHasLike">LIKE</p>
       <button @click="openMenuComments" class="comment-button">
         Voir les commentaires <span>({{ comments.length }})</span>
       </button>
@@ -120,6 +120,7 @@ export default {
       await axios
         .get(`https://back-end-resoki.herokuapp.com/${id}/${username}`)
         .then((res) => {
+          console.log('resstatus', res.status)
           if (res.status === 200) {
             return (this.userHasLike = true);
           }
