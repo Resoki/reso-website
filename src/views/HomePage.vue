@@ -255,7 +255,6 @@ export default {
         .then((res) => {
           console.log(res.data);
           if (res.data.message === "L'utilisateur a aimé ce post") {
-            this.likesListUser = [];
             return (this.userHasLike = true);
           }
           if (res.data.message === "L'utilisateur n'a pas aimé ce post") {
