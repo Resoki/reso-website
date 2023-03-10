@@ -147,7 +147,7 @@ export default {
 
     const username = localStorage.getItem("loginUser");
     axios
-      .get(`https://back-end-resoki.herokuapp.com/${username}`)
+      .get(`https://back-end-resoki.herokuapp.com/profile/${username}`)
       .then((res) => {
         this.data.firstname = res.data.firstname;
         this.data.lastname = res.data.lastname;
