@@ -45,7 +45,7 @@
         >
           <div class="comment-user">
             <img
-              :src="`http://localhost:3000/${comment.photo}`"
+              :src="`https://zippy-madeleine-d83888.netlify.app/${comment.photo}`"
               alt="Photo de profil du commentateur"
               class="comment-user__photo"
             />
@@ -118,7 +118,7 @@ export default {
     async userHasLikePost(id) {
       const username = localStorage.getItem("loginUser");
       await axios
-        .get(`http://localhost:3000/checking/like/${id}/${username}`)
+        .get(`https://zippy-madeleine-d83888.netlify.app/checking/like/${id}/${username}`)
         .then((res) => {
           if (res.status === 200) {
             return (this.userHasLike = true);

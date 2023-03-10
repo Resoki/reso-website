@@ -15,7 +15,7 @@
   </div>
     <div class="feed-post" v-for="(post, index) in displayFound" :key="index">
     <div class="user-info">
-      <img class="img-user" :src="`http://localhost:3000/${post.photo}`" alt="Card Image" />
+      <img class="img-user" :src="`https://zippy-madeleine-d83888.netlify.app/${post.photo}`" alt="Card Image" />
       <p class="" @click="goToProfil(post.login)">@{{ post.login }}</p>
     </div>
   </div>
@@ -42,14 +42,14 @@ export default {
     async clickSearch() {
       this.displayFound = [];
       await axios
-        .get(`http://localhost:3000/users/${this.username}`)
+        .get(`https://zippy-madeleine-d83888.netlify.app/users/${this.username}`)
         .then((res) => {
           res.data.forEach((data) => {
               let obj = {login: data.login, photo: data.photo}
               this.displayFound.push(obj)
           })
           this.authorFound = res.data.login;
-          this.photoAuthorFound = `http://localhost:3000/${res.data.photo}`;
+          this.photoAuthorFound = `https://zippy-madeleine-d83888.netlify.app/${res.data.photo}`;
           if (res.length) this.foundItem = true;
         });
     },

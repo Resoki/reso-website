@@ -44,7 +44,7 @@ export default {
     async submitForm() {
       try {
         await axios
-          .post("http://localhost:3000/login", {
+          .post("https://zippy-madeleine-d83888.netlify.app/login", {
             login: this.login,
             password: this.password,
           })

@@ -79,7 +79,7 @@ export default {
     async submitForm() {
       try {
         await axios
-          .post("http://localhost:3000/register", {
+          .post("https://zippy-madeleine-d83888.netlify.app/register", {
             login: this.login,
             email: this.email,
             gender: this.gender,
@@ -115,7 +115,7 @@ export default {
       const formData = new FormData();
       formData.append("file", file);
 
-      axios.post("http://localhost:3000/upload", formData).then((res) => {console.log("photo save", res)});
+      axios.post("https://zippy-madeleine-d83888.netlify.app/upload", formData).then((res) => {console.log("photo save", res)});
 
       console.log(file);
     },
