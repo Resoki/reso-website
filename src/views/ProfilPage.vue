@@ -330,7 +330,6 @@ export default {
       let obj = {
         login: username,
       };
-      console.log(post);
       post.likesListUser.push(obj);
       await axios
         .put("https://back-end-resoki.herokuapp.com/add/like", post)
