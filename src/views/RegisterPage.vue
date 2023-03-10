@@ -92,7 +92,6 @@ export default {
           })
           .then(() => {
             this.message = "User created successfully!";
-            this.$router.go("/");
           })
           .catch((err) => {
             console.log("err", err.response);
