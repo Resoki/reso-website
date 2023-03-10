@@ -42,7 +42,7 @@ export default {
     async clickSearch() {
       this.displayFound = [];
       await axios
-        .get(`https://back-end-resoki.herokuapp.com/${this.username}`)
+        .get(`https://back-end-resoki.herokuapp.com/profile/${this.username}`)
         .then((res) => {
           res.data.forEach((data) => {
               let obj = {login: data.login, photo: data.photo}
