@@ -169,7 +169,7 @@ export default {
     async getData() {
       const username = localStorage.getItem("loginUser");
       await axios
-        .get(`https://back-end-resoki.herokuapp.com/${username}`)
+        .get(`https://back-end-resoki.herokuapp.com/profile/${username}`)
         .then((res) => {
           this.photoNameComment = res.data.photo;
           this.dataDisplay = `https://back-end-resoki.herokuapp.com/${res.data.photo}`;
