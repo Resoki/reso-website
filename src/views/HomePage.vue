@@ -234,6 +234,7 @@ export default {
         login: this.username,
       };
       post.likesListUser.push(obj);
+      console.log('try to push', post)
       await axios
         .put("https://back-end-resoki.herokuapp.com/add/like", post)
         .then(() => {
