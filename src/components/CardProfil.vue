@@ -118,14 +118,17 @@ export default {
     async userHasLikePost(id) {
       const username = localStorage.getItem("loginUser");
       await axios
-        .get(`https://back-end-resoki.herokuapp.com/checking/like/${id}/${username}`)
+        .get(
+          `https://back-end-resoki.herokuapp.com/checking/like/${id}/${username}`
+        )
         .then((res) => {
-          console.log(res.data)
+          console.log(res.data);
           if (res.data.message === "L'utilisateur a aimé ce post") {
             return (this.userHasLike = true);
           }
-           (this.userHasLike = false);
-          return (this.userHasLike =  "L'utilisateur n'a pas aimé ce post");
+          if (res.data.message === "L'utilisateur n'a pas aimé ce post") {
+            return (this.userHasLike = false);
+          }
         })
         .catch(() => {});
     },
