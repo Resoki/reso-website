@@ -132,13 +132,13 @@ export default {
     },
     goToProfil() {
       localStorage.setItem("seeProfilUser", this.author);
-      this.$router.push('/seeprofil')
+      this.$router.push("/seeprofil");
     },
     goToProfilFromCom(login) {
       console.log("setitem", login);
 
       localStorage.setItem("seeProfilUser", login);
-      location.assign("/seeprofil");
+      this.$router.push("/seeprofil");
     },
     formData(value) {
       if (value) {
