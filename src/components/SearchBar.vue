@@ -13,9 +13,13 @@
       />
     </span>
   </div>
-    <div class="feed-post" v-for="(post, index) in displayFound" :key="index">
+  <div class="feed-post" v-for="(post, index) in displayFound" :key="index">
     <div class="user-info">
-      <img class="img-user" :src="`https://back-end-resoki.herokuapp.com/${post.photo}`" alt="Card Image" />
+      <img
+        class="img-user"
+        :src="`https://back-end-resoki.herokuapp.com/${post.photo}`"
+        alt="Card Image"
+      />
       <p class="" @click="goToProfil(post.login)">@{{ post.login }}</p>
     </div>
   </div>
@@ -44,10 +48,13 @@ export default {
       await axios
         .get(`https://back-end-resoki.herokuapp.com/profile/${this.username}`)
         .then((res) => {
-          res.data.forEach((data) => {
-              let obj = {login: data.login, photo: data.photo}
-              this.displayFound.push(obj)
-          })
+          console.log("res data", res.data);
+          if (res.data.length) {
+            res.data.forEach((data) => {
+              let obj = { login: data.login, photo: data.photo };
+              this.displayFound.push(obj);
+            });
+          }
           this.authorFound = res.data.login;
           this.photoAuthorFound = `https://back-end-resoki.herokuapp.com/${res.data.photo}`;
           if (res.length) this.foundItem = true;
