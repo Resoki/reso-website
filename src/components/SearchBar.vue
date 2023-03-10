@@ -13,7 +13,7 @@
       />
     </span>
   </div>
-  <div class="feed-post" v-for="(post, index) in displayFound" :key="index">
+  <div :v-if="displayFound.length" class="feed-post" v-for="(post, index) in displayFound" :key="index">
     <div class="user-info">
       <img
         class="img-user"
@@ -46,7 +46,7 @@ export default {
     async clickSearch() {
       this.displayFound = [];
       await axios
-        .get(`https://back-end-resoki.herokuapp.com/users/${this.value}`)
+        .get(`https://back-end-resoki.herokuapp.com/users/${this.username}`)
         .then((res) => {
           console.log("res data", res.data);
           if (res.data.length) {
