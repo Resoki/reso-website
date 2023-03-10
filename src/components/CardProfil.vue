@@ -118,7 +118,7 @@ export default {
     async userHasLikePost(id) {
       const username = localStorage.getItem("loginUser");
       await axios
-        .get(`https://back-end-resoki.herokuapp.com/${id}/${username}`)
+        .get(`https://back-end-resoki.herokuapp.com/checking/like/${id}/${username}`)
         .then((res) => {
           console.log('resstatus', res.status)
           if (res.status === 200) {
