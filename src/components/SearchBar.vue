@@ -64,7 +64,7 @@ export default {
     goToProfil(login) {
       this.displayFound = [];
       localStorage.setItem("seeProfilUser", login);
-      location.assign("/seeprofil");
+      this.$router.push('/seeprofil')
     },
   },
 };
