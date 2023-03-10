@@ -96,6 +96,7 @@ export default {
     seeComments: Function,
     clickLike: Function,
     value: String,
+    userHasLike: Boolean
   },
   data() {
     return {
@@ -115,23 +116,6 @@ export default {
     this.userHasLikePost(this.date);
   },
   methods: {
-    async userHasLikePost(id) {
-      const username = localStorage.getItem("loginUser");
-      await axios
-        .get(
-          `https://back-end-resoki.herokuapp.com/checking/like/${id}/${username}`
-        )
-        .then((res) => {
-          console.log(res.data);
-          if (res.data.message === "L'utilisateur a aimé ce post") {
-            return (this.userHasLike = true);
-          }
-          if (res.data.message === "L'utilisateur n'a pas aimé ce post") {
-            return (this.userHasLike = false);
-          }
-        })
-        .catch(() => {});
-    },
     openMenuComments() {
       this.isOpenMenuComments = !this.isOpenMenuComments;
     },

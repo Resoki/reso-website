@@ -37,6 +37,7 @@
             :seeComments="addComment"
             :clickLike="() => addLike(post.id, post.likesListUser)"
             :author="post.login"
+            :userHasLike="userHasLike"
             :date="post.id"
             :likeCount="post.likesListUser"
             @valueContent="handleContent"
@@ -67,6 +68,7 @@ export default {
       photoUser: "",
       contentHere: "",
       userPhoto: "",
+      userHasLike: false,
       photoNameComment: "",
       comments: [],
       newTab: [],
@@ -80,6 +82,7 @@ export default {
     }
     this.getData();
     this.getAllPosts();
+    this.userHasLikePost(id);
   },
   methods: {
     async getData() {
@@ -114,6 +117,7 @@ export default {
         .then((res) => {
           this.posts = [];
           res.data.forEach((el) => {
+            this.userHasLikePost(el.post);
             this.posts.push(el);
           });
           this.getAllUser();
@@ -239,7 +243,26 @@ export default {
         .catch(() => {
           return setTimeout(() => this.getAllPosts(), 200);
         });
+      this.userHasLikePost(id);
       return;
+    },
+
+    async userHasLikePost(id) {
+      const username = localStorage.getItem("loginUser");
+      await axios
+        .get(
+          `https://back-end-resoki.herokuapp.com/checking/like/${id}/${username}`
+        )
+        .then((res) => {
+          console.log(res.data);
+          if (res.data.message === "L'utilisateur a aimé ce post") {
+            return (this.userHasLike = true);
+          }
+          if (res.data.message === "L'utilisateur n'a pas aimé ce post") {
+            return (this.userHasLike = false);
+          }
+        })
+        .catch(() => {});
     },
   },
 };
