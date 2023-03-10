@@ -4,7 +4,7 @@
       <img class="img-user" :src="photoUser" alt="Card Image" />
       <p class="author" @click="goToProfil">@{{ author }}</p>
       <p class="ilya">{{ formData(date) }}</p>
-      <span v-if="displayLikeCount" class="like-count" @click="openListLike()"
+      <span class="like-count" @click="openListLike()"
         >{{ likeCount.length }}
         <img
           src="https://static.vecteezy.com/system/resources/thumbnails/001/188/163/small/heart.png"
