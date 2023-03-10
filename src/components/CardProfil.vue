@@ -120,6 +120,7 @@ export default {
       await axios
         .get(`https://back-end-resoki.herokuapp.com/checking/like/${id}/${username}`)
         .then((res) => {
+          console.log(res.data)
           if (res.data.message === "L'utilisateur a aimé ce post") {
             return (this.userHasLike = true);
           }
