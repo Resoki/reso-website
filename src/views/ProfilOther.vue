@@ -70,8 +70,8 @@
       <div class="feed-post" v-for="(post, index) in newTab" :key="index">
         <CardProfil
           v-if="post.login === data.login"
-          :img="`https://zippy-madeleine-d83888.netlify.app/${post.photo}`"
-          :photoUser="`https://zippy-madeleine-d83888.netlify.app/${post.userPhoto}`"
+          :img="`https://back-end-resoki.herokuapp.com/${post.photo}`"
+          :photoUser="`https://back-end-resoki.herokuapp.com/${post.userPhoto}`"
           :comments="post.comments"
           :seeComments="addComment"
           :title="post.title"
@@ -133,7 +133,7 @@ export default {
 
     // const username = localStorage.getItem("loginUser");
     axios
-      .get(`https://zippy-madeleine-d83888.netlify.app/${userSee}`)
+      .get(`https://back-end-resoki.herokuapp.com/${userSee}`)
       .then((res) => {
         this.data.firstname = res.data.firstname;
         this.data.lastname = res.data.lastname;
@@ -143,7 +143,7 @@ export default {
         this.data.category = res.data.category;
         this.data.photo = res.data.photo;
         this.data.date = res.data.date;
-        this.data.dataDisplay = `https://zippy-madeleine-d83888.netlify.app/${res.data.photo}`;
+        this.data.dataDisplay = `https://back-end-resoki.herokuapp.com/${res.data.photo}`;
       })
       .catch((err) => {
         console.log("err", err);
@@ -156,7 +156,7 @@ export default {
     async getData() {
       const username = localStorage.getItem("loginUser");
       await axios
-        .get(`https://zippy-madeleine-d83888.netlify.app/${username}`)
+        .get(`https://back-end-resoki.herokuapp.com/${username}`)
         .then((res) => {
           this.photoName= res.data.photo;
           this.photoUser = res.data.photo;
@@ -170,7 +170,7 @@ export default {
     },
     async getAllPosts() {
       await axios
-        .get(`https://zippy-madeleine-d83888.netlify.app/all/posts`)
+        .get(`https://back-end-resoki.herokuapp.com/all/posts`)
         .then((res) => {
           this.posts = [];
           res.data.forEach((el) => {
@@ -188,7 +188,7 @@ export default {
             if (!el) return;
             let i = "";
             await axios
-              .get(`https://zippy-madeleine-d83888.netlify.app/profile/${el.login}`)
+              .get(`https://back-end-resoki.herokuapp.com/profile/${el.login}`)
               .then((res) => {
                 i = res.data.photo;
               });
@@ -234,7 +234,7 @@ export default {
       console.log("post", post);
       post.comments.push(obj);
       await axios
-        .put("https://zippy-madeleine-d83888.netlify.app/add/post", post)
+        .put("https://back-end-resoki.herokuapp.com/add/post", post)
         .then(() => {
           setTimeout(() => this.getAllPosts(), 200);
         })

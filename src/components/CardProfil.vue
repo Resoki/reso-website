@@ -45,7 +45,7 @@
         >
           <div class="comment-user">
             <img
-              :src="`https://zippy-madeleine-d83888.netlify.app/${comment.photo}`"
+              :src="`https://back-end-resoki.herokuapp.com/${comment.photo}`"
               alt="Photo de profil du commentateur"
               class="comment-user__photo"
             />
@@ -118,7 +118,7 @@ export default {
     async userHasLikePost(id) {
       const username = localStorage.getItem("loginUser");
       await axios
-        .get(`https://zippy-madeleine-d83888.netlify.app/checking/like/${id}/${username}`)
+        .get(`https://back-end-resoki.herokuapp.com/${id}/${username}`)
         .then((res) => {
           if (res.status === 200) {
             return (this.userHasLike = true);

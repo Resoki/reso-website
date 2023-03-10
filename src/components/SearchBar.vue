@@ -15,7 +15,7 @@
   </div>
     <div class="feed-post" v-for="(post, index) in displayFound" :key="index">
     <div class="user-info">
-      <img class="img-user" :src="`https://zippy-madeleine-d83888.netlify.app/${post.photo}`" alt="Card Image" />
+      <img class="img-user" :src="`https://back-end-resoki.herokuapp.com/${post.photo}`" alt="Card Image" />
       <p class="" @click="goToProfil(post.login)">@{{ post.login }}</p>
     </div>
   </div>
@@ -42,14 +42,14 @@ export default {
     async clickSearch() {
       this.displayFound = [];
       await axios
-        .get(`https://zippy-madeleine-d83888.netlify.app/users/${this.username}`)
+        .get(`https://back-end-resoki.herokuapp.com/${this.username}`)
         .then((res) => {
           res.data.forEach((data) => {
               let obj = {login: data.login, photo: data.photo}
               this.displayFound.push(obj)
           })
           this.authorFound = res.data.login;
-          this.photoAuthorFound = `https://zippy-madeleine-d83888.netlify.app/${res.data.photo}`;
+          this.photoAuthorFound = `https://back-end-resoki.herokuapp.com/${res.data.photo}`;
           if (res.length) this.foundItem = true;
         });
     },

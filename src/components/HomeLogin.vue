@@ -44,7 +44,7 @@ export default {
     async submitForm() {
       try {
         await axios
-          .post("https://zippy-madeleine-d83888.netlify.app/login", {
+          .post("https://back-end-resoki.herokuapp.com/login", {
             login: this.login,
             password: this.password,
           })
