@@ -235,6 +235,7 @@ export default {
       await axios
         .put("https://back-end-resoki.herokuapp.com/add/like", post)
         .then(() => {
+                this.likesListUser = [];
           return setTimeout(() => this.getAllPosts(), 200);
         })
         .catch(() => {
