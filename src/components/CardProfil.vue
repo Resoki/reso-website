@@ -120,11 +120,11 @@ export default {
       await axios
         .get(`https://back-end-resoki.herokuapp.com/checking/like/${id}/${username}`)
         .then((res) => {
-          console.log('resstatus', res.status)
-          if (res.status === 200) {
+          if (res.data.message === "L'utilisateur a aimé ce post") {
             return (this.userHasLike = true);
           }
-          return (this.userHasLike = false);
+           (this.userHasLike = false);
+          return (this.userHasLike =  "L'utilisateur n'a pas aimé ce post");
         })
         .catch(() => {});
     },
