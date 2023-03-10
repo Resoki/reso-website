@@ -156,9 +156,11 @@ export default {
       const formData = new FormData();
       formData.append("file", file);
 
-      axios.post("https://back-end-resoki.herokuapp.com/upload", formData).then((res) => {
-        console.log("photo save", res);
-      });
+      axios
+        .post("https://back-end-resoki.herokuapp.com/upload", formData)
+        .then((res) => {
+          console.log("photo save", res);
+        });
     },
     async addPost() {
       if (!this.title && !this.photoUser) return;
@@ -250,6 +252,11 @@ h3 {
   margin: 40px 0 0;
 }
 
+@media (max-width: 768px) {
+  form {
+    width: 300px !important;
+  }
+}
 h2 {
   color: white;
 }
