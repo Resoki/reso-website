@@ -46,7 +46,7 @@ export default {
     async clickSearch() {
       this.displayFound = [];
       await axios
-        .get(`https://back-end-resoki.herokuapp.com/profile/${this.username}`)
+        .get(`https://back-end-resoki.herokuapp.com/users/${value}`)
         .then((res) => {
           console.log("res data", res.data);
           if (res.data.length) {
