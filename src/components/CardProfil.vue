@@ -4,7 +4,7 @@
       <img class="img-user" :src="photoUser" alt="Card Image" />
       <p class="author" @click="goToProfil">@{{ author }}</p>
       <p class="ilya">{{ formData(date) }}</p>
-      <span v-if="likeCount" class="like-count" @click="openListLike()"
+      <span v-if="displayLikeCount" class="like-count" @click="openListLike()"
         >{{ likeCount.length }}
         <img
           src="https://static.vecteezy.com/system/resources/thumbnails/001/188/163/small/heart.png"
@@ -25,12 +25,11 @@
       <span class="like-add-btn" v-if="likeCount" @click="clickLike"
         >{{ likeCount.length }}
         <img
-          v-if="userHasLike"
+          v-if="!userHasLike"
           src="https://static.vecteezy.com/system/resources/thumbnails/001/188/163/small/heart.png"
           alt="Card Image"
           style="width: 40px; height: 30px"
       /></span>
-      <p v-if="userHasLike">LIKE</p>
       <button @click="openMenuComments" class="comment-button">
         Voir les commentaires <span>({{ comments.length }})</span>
       </button>
@@ -109,6 +108,7 @@ export default {
       isOpenMenuComments: false,
       valueContent: "",
       isOpenListLike: false,
+      displayLikeCount: false
     };
   },
   created() {

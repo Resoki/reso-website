@@ -209,7 +209,6 @@ export default {
         login: this.username,
         photo: this.photoNameComment,
       };
-      console.log("OULA", obj);
       post.comments.push(obj);
       await axios
         .put("https://back-end-resoki.herokuapp.com/add/post", post)
@@ -235,7 +234,6 @@ export default {
       await axios
         .put("https://back-end-resoki.herokuapp.com/add/like", post)
         .then(() => {
-                this.likesListUser = [];
           return setTimeout(() => this.getAllPosts(), 200);
         })
         .catch(() => {
